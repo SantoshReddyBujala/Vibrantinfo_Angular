@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
-    <mat-icon>home</mat-icon>
-    <span>vibrant user Info</span>
+    <mat-icon routerLink="/home">{{homeCompLabels?.home}}</mat-icon>
+    <span routerLink="/home">{{homeCompLabels?.headerTitle | uppercase}}</span>
     <span class="spacer"></span>
-    <span>Login</span>
+    <span routerLink="/login">{{homeCompLabels?.LoginLbl}}</span>
 </mat-toolbar>
+<router-outlet></router-outlet>

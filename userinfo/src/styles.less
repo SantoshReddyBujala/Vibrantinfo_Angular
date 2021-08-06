@@ -1,7 +1,48 @@
 /* You can add global styles to this file, and also import other style files */
+@oneEm: 1em;
+@width100: 100%;
+
 body {
     margin: 0;
-  } 
+}
+
 .spacer {
     flex: 1 1 auto;
-  }
+}
+
+.mar_left {
+    margin-left: @oneEm;
+}
+
+.login-form {
+    min-width: @oneEm *30;
+    max-width: @oneEm *30;
+    width    : @width100;
+}
+
+.full-width {
+    width: @width100;
+}
+
+.login-card {
+    display        : flex;
+    justify-content: center;
+    margin-top     : @oneEm *10;
+   
+}
+
+.card-bg {
+    background-color: #eee;
+    color           : black !important;
+}
+
+.flex-center {
+    display        : flex;
+    justify-content: center;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-label {
+    color: #111 !important;
+    font-size: 1.25em;
+}
+
