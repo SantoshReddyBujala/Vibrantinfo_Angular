@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { UserService } from 'src/app/user/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -9,18 +11,13 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./users-list.component.less']
 })
 export class UsersListComponent implements OnInit {
-  displayedColumns = ['productName', 'productCode', 'prodRating', 'edit', 'delete'];
-  products = [{
-    id: 1,
-    productName: 'Netgear Cable Modem',
-    productCode: 'CM700',
-    proddescription: 'Netgear Cable Modem compatible with all cables',
-    prodRating: 4.0
-  }];
-  dataSource = new MatTableDataSource(this.products);
+  displayedColumns = ['avatar', 'email', 'first_name', 'last_name', 'edit', 'delete'];
+  
+  constructor(private userService:UserService){}
+  dataSource: any;
   //@ViewChild(MatPaginator) paginator: MatPaginator;
   //@ViewChild(MatSort, {}) sort: MatSort;
-  constructor() { }
+ 
 
   onNavigate(id?: any){
 
@@ -42,6 +39,9 @@ export class UsersListComponent implements OnInit {
   ngOnInit() {
     //this.dataSource = this.products;
     //this.dataSource.paginator = this.paginator;
+    this.userService.getUsers().subscribe((data : any) => {
+      this.dataSource = new MatTableDataSource(data.data);
+    });
 
   }
 

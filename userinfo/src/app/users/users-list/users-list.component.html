@@ -6,25 +6,25 @@
       </ng-container>
 
       <!-- Second Column -->
-      <ng-container matColumnDef="productName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.productName}} </mat-cell>
+      <ng-container matColumnDef="avatar">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
+        <mat-cell *matCellDef="let element"><img [src]="element.avatar" width="75" height="75" alt="image"/> </mat-cell>
       </ng-container>
 
       <!-- Third Column -->
-      <ng-container matColumnDef="productCode">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Code </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-          <div class="form-group">
-            <a target="_blank" 
-              (click)="onNavigate(element.productCode)" href="#">{{element.productCode}}</a>
-          </div>
-        </mat-cell>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+        <mat-cell *matCellDef="let element">{{element.email}}</mat-cell>
       </ng-container>
       <!-- Fourth Column -->
-      <ng-container matColumnDef="prodRating">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> Rating </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.prodRating }} </mat-cell>
+      <ng-container matColumnDef="first_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Fristname </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.first_name }} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="last_name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.last_name }} </mat-cell>
       </ng-container>
       <!-- Action Column -->
       <ng-container matColumnDef="edit">
