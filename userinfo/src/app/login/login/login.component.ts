@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GlobalConstants } from 'src/app/common/global-constants';
-import {CustomerService} from './../../common/services/customer.service'
+import { AuthService } from 'src/app/services/auth.service';
+import {CustomerService} from '../../services/customer.service'
 
 @Component({
   selector: 'app-login',
@@ -22,7 +23,8 @@ export class LoginComponent implements OnInit {
   });
   constructor(private fb: FormBuilder,
     private custSevice: CustomerService,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService) {
     console.log('Login Module loaded');
   }
 
@@ -38,6 +40,7 @@ export class LoginComponent implements OnInit {
     let gpwd = this.profileForm.value.pwd;
     if (gname === this.uname && gpwd === this.password) {
       this.custSevice.setId('123AA');
+      this.authService.authSuccess();
       this.custSevice.setName(this.profileForm.value.name);
       this.router.navigate(['/users'])
     }else {
