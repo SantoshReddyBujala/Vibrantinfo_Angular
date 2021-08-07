@@ -6,6 +6,8 @@ import { UserService } from 'src/app/user/user.service';
 import { Observable } from 'rxjs';
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { LoaderService } from 'src/app/services/loader.service';
+import { CommonDialogComponent } from '../common-dialog/common-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-users-list',
@@ -20,7 +22,8 @@ export class UsersListComponent implements OnInit {
   displayedColumns = [this.matTableConsts?.avatar, this.matTableConsts?.email, this.matTableConsts?.first_name, this.matTableConsts?.last_name, this.matTableConsts?.edit, this.matTableConsts?.delete];
 
   constructor(private userService: UserService,
-    private loaderService: LoaderService) { }
+    private loaderService: LoaderService,
+    public dialog: MatDialog) { }
   dataSource: any;
   //@ViewChild(MatPaginator) paginator: MatPaginator;
   //@ViewChild(MatSort, {}) sort: MatSort;
@@ -56,7 +59,14 @@ export class UsersListComponent implements OnInit {
 
   }
 
+  getRecord(currentRecord?: any): void {
 
+    const dialogRef = this.dialog.open(CommonDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
 
   filterProduct(value: string): void {
