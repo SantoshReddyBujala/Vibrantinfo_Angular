@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-common-dialog',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./common-dialog.component.less']
 })
 export class CommonDialogComponent implements OnInit {
-
-  constructor() { }
+  userData!:any;
+  constructor( @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
+    this.userData= this.data.userDetails.data;
   }
 
 }

@@ -15,8 +15,8 @@ export class UserService {
    return this.http.get(this.baseUrl + 'api/users')
     
   }
-  getUser(){
-
+  getUser(id?: string):Observable<any> {
+    return this.http.get(this.baseUrl + 'api/users/'+ id)
   }
   updateUser(){
 

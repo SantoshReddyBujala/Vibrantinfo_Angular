@@ -1,11 +1,23 @@
-<h1 mat-dialog-title>User Details</h1>
-<div mat-dialog-content>
-    My favorite animal is:
-    <ul>
-        <li>Testing Data</li>
-    </ul>
+<div class="flex-center">
+    <h1 mat-dialog-title>User Details</h1>
 </div>
-<mat-dialog-actions align="center">
-    <button mat-button mat-dialog-close>Cancel</button>
+<hr>
+<div class="flex-center">
+    <img src="{{userData?.avatar}}" alt="User Details">
+</div>
+<div class="flex marginTop">
 
+    <div class="flex40">
+        <legend>First name</legend>
+        <legend>Last name</legend>
+        <legend>Email</legend>
+    </div>
+    <div class="flex60">
+        <legend>:{{userData?.first_name}}</legend>
+        <legend>:{{userData?.last_name}}</legend>
+        <legend>:{{userData?.email}}</legend>
+    </div>
+</div>
+<mat-dialog-actions class="flex-center marginTop">
+    <button mat-raised-button mat-dialog-close color="accent">Cancel</button>
 </mat-dialog-actions>
