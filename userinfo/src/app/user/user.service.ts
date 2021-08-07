@@ -21,8 +21,8 @@ export class UserService {
   updateUser(){
 
   }
-  deleteUser(){
-
+  deleteUser(id?:string):Observable<any>{
+    return this.http.delete(this.baseUrl + 'api/users/'+ id)
   }
   
 }

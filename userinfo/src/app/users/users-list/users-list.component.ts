@@ -8,6 +8,10 @@ import { GlobalConstants } from 'src/app/common/global-constants';
 import { LoaderService } from 'src/app/services/loader.service';
 import { CommonDialogComponent } from '../common-dialog/common-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserFormComponent } from '../user-form/user-form.component';
+
 
 @Component({
   selector: 'app-users-list',
@@ -23,7 +27,9 @@ export class UsersListComponent implements OnInit {
 
   constructor(private userService: UserService,
     private loaderService: LoaderService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private router: Router,
+    private authService: AuthService,) { }
   dataSource: any;
   //@ViewChild(MatPaginator) paginator: MatPaginator;
   //@ViewChild(MatSort, {}) sort: MatSort;
@@ -38,11 +44,11 @@ export class UsersListComponent implements OnInit {
   }
 
   delete(id?: any): void {
-
-  }
-
-  userDetails(): void {
-
+    this.loaderService.show();
+    this.userService.deleteUser(id).subscribe((data: any) => {
+      console.log(data)
+      this.loaderService.hide();
+    });
   }
 
   ngAfterViewInit() {
@@ -59,9 +65,10 @@ export class UsersListComponent implements OnInit {
 
   }
 
-  getRecord(currentRecord?: any): void {
+  userDetails(currentRdId?: any): void {
+    this.loaderService.show();
     let userData: any;
-    this.userService.getUser(currentRecord.id).subscribe((data: any) => {
+    this.userService.getUser(currentRdId).subscribe((data: any) => {
       userData = data;
       this.loaderService.hide();
       const dialogRef = this.dialog.open(CommonDialogComponent, {
@@ -82,12 +89,14 @@ export class UsersListComponent implements OnInit {
   filterProduct(value: string): void {
     this.dataSource.filter = value.trim().toLowerCase();
   }
-}
-export interface Product {
-  id: number | null;
-  productName: string;
-  productCode: string;
-  proddescription?: string;
-  prodRating?: number;
-  loaging$?: any;
+  userForm(): void{
+    const dialogRef = this.dialog.open(UserFormComponent, {
+      width: '400px',
+      height: '570px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }

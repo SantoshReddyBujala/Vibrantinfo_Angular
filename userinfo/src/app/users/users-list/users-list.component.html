@@ -1,12 +1,12 @@
 <div>
   <div class="flex margin">
-    <mat-form-field>
-      <mat-label>Filter Product</mat-label>
+    <mat-form-field >
+      <mat-label class="search">Filter Product</mat-label>
       <input matInput type="text" [(ngModel)]="filterValue" (blur)="filterProduct(filterValue)"
         placeholder="Search product name">
     </mat-form-field>
     <div class="margin-left">
-      <button mat-raised-button color="primary" (cklick)="userDetails()">Add User</button>
+      <button mat-raised-button color="primary" (click)="userForm()">Add User</button>
     </div>
   </div>
   <mat-table #table [dataSource]="dataSource" matSort>
@@ -57,8 +57,9 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="getRecord(row)"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="userDetails(row.id)"></mat-row>
   </mat-table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
 </div>
