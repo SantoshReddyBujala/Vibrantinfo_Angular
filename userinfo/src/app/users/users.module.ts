@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserFormComponent } from './user-form/user-form.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { FormsModule } from '@angular/forms';
+import { CommonDialogComponent } from './common-dialog/common-dialog.component';
 
 const routes: Routes = [
   { path: '', component: UsersListComponent }
@@ -15,7 +16,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     UsersListComponent,
-    UserFormComponent
+    UserFormComponent,
+    CommonDialogComponent
   ],
   imports: [
     CommonModule,
