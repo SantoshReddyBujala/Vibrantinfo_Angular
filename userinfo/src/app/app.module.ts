@@ -8,13 +8,15 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './loader/loader.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

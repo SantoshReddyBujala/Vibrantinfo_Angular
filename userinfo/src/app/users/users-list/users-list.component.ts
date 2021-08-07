@@ -4,6 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/user/user.service';
 import { Observable } from 'rxjs';
+import { GlobalConstants } from 'src/app/common/global-constants';
+import { LoaderService } from 'src/app/services/loader.service';
 
 @Component({
   selector: 'app-users-list',
@@ -11,23 +13,32 @@ import { Observable } from 'rxjs';
   styleUrls: ['./users-list.component.less']
 })
 export class UsersListComponent implements OnInit {
-  displayedColumns = ['avatar', 'email', 'first_name', 'last_name', 'edit', 'delete'];
-  
-  constructor(private userService:UserService){}
+  filterValue: any;
+  userListLabels = GlobalConstants;
+  matTableConsts = GlobalConstants?.MAT_TABLE_DATA_LABELS;
+  matTableHeaders = GlobalConstants?.MAT_TABLE_HEADER_LABELS;
+  displayedColumns = [this.matTableConsts?.avatar, this.matTableConsts?.email, this.matTableConsts?.first_name, this.matTableConsts?.last_name, this.matTableConsts?.edit, this.matTableConsts?.delete];
+
+  constructor(private userService: UserService,
+    private loaderService: LoaderService) { }
   dataSource: any;
   //@ViewChild(MatPaginator) paginator: MatPaginator;
   //@ViewChild(MatSort, {}) sort: MatSort;
- 
 
-  onNavigate(id?: any){
 
-  }
-
-  edit(edit?: any){
+  onNavigate(id?: any): void {
 
   }
 
-  delete(id?: any){
+  edit(edit?: any): void {
+
+  }
+
+  delete(id?: any): void {
+
+  }
+
+  userDetails(): void {
 
   }
 
@@ -37,15 +48,15 @@ export class UsersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.dataSource = this.products;
-    //this.dataSource.paginator = this.paginator;
-    this.userService.getUsers().subscribe((data : any) => {
+    this.loaderService.show();
+    this.userService.getUsers().subscribe((data: any) => {
       this.dataSource = new MatTableDataSource(data.data);
+      this.loaderService.hide();
     });
 
   }
 
-  
+
 
 
   filterProduct(value: string): void {
@@ -58,5 +69,5 @@ export interface Product {
   productCode: string;
   proddescription?: string;
   prodRating?: number;
-  loaging$?:any;
+  loaging$?: any;
 }
