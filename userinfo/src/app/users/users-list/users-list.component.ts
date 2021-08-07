@@ -60,11 +60,21 @@ export class UsersListComponent implements OnInit {
   }
 
   getRecord(currentRecord?: any): void {
+    let userData: any;
+    this.userService.getUser(currentRecord.id).subscribe((data: any) => {
+      userData = data;
+      this.loaderService.hide();
+      const dialogRef = this.dialog.open(CommonDialogComponent, {
+        width: '350px',
+        height: '380px',
+        data: {
+          userDetails: userData
+        }
+      });
 
-    const dialogRef = this.dialog.open(CommonDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
     });
   }
 
