@@ -1,1 +1,77 @@
-<p>user-form works!</p>
+<h3 class="flex-center">{{userLabels?.LoginLbl}}</h3>
+<form class="user-form" [formGroup]="userForm" (ngSubmit)="onSubmit()" color="primary">
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label color="primay">{{userLabels?.unameLbl}}</mat-label>
+        <input color="primay" matInput placeholder="Username" formControlName="name">
+        <mat-error *ngIf="f.name.errors?.required">
+            {{userLabels?.unameReqLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.name.errors?.minlength">
+            {{userLabels?.unameMinLbl}}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input matInput placeholder="Last name" formControlName="lname">
+        <mat-error *ngIf="f.lname.errors?.required">
+            {{userLabels?.pwdReqLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.lname.errors?.minlength">
+            {{userLabels?.pwdMinLbl}}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>User name</mat-label>
+        <input matInput placeholder="User name" formControlName="uname">
+        <mat-error *ngIf="f.uname.errors?.required">
+            {{userLabels?.pwdReqLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.uname.errors?.minlength">
+            {{userLabels?.pwdMinLbl}}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Phone Number</mat-label>
+        <input matInput placeholder="Phone number" formControlName="pnum">
+        <mat-error *ngIf="f.pnum.errors?.required">
+            {{userLabels?.pwdReqLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.pnum.errors?.minlength">
+            {{userLabels?.pwdMinLbl}}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="f.email.errors?.required">
+            {{userLabels?.pwdReqLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.email.errors?.minlength">
+            {{userLabels?.pwdMinLbl}}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput placeholder="Address" formControlName="addr">
+        <mat-error *ngIf="f.addr.errors?.required">
+            {{userLabels?.pwdReqLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.addr.errors?.minlength">
+            {{userLabels?.pwdMinLbl}}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Pincode</mat-label>
+        <input matInput placeholder="Pincode" formControlName="pcode">
+        <mat-error *ngIf="f.pcode.errors?.required">
+            {{userLabels?.pwdReqLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.pcode.errors?.minlength">
+            {{userLabels?.pwdMinLbl}}
+        </mat-error>
+    </mat-form-field>
+    <mat-dialog-actions class="flex-center">
+        <button class="padding-lr" type="submit" mat-raised-button color="primary">Submit</button>
+        <button mat-raised-button mat-dialog-close color="accent">Cancel</button>
+    </mat-dialog-actions>
+</form>
