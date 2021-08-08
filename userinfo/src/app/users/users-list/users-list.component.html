@@ -1,12 +1,12 @@
 <div>
   <div class="flex margin">
     <mat-form-field>
-      <mat-label class="search">Filter Product</mat-label>
+      <mat-label class="search">{{userListLabels?.userFilterLbl}}</mat-label>
       <input matInput type="text" [(ngModel)]="filterValue" (blur)="filterProduct(filterValue)"
-        placeholder="Search product name">
+        placeholder="{{userListLabels?.userFilterPlaceLbl}}">
     </mat-form-field>
     <div class="margin-left">
-      <button mat-raised-button color="primary" (click)="userForm()">Add User</button>
+      <button mat-raised-button color="primary" (click)="userForm()">{{userListLabels?.addUserBtn}}</button>
     </div>
   </div>
   <div [hidden]="!userNotFound">
