@@ -1,12 +1,12 @@
-<h3 class="flex-center nomargin">{{userLabels?.UserLbl}}</h3>
+<h3 class="flex-center nomargin">{{formHeader}}</h3>
 <form class="user-form" [formGroup]="userForm" (ngSubmit)="onSubmit()" color="primary">
     <mat-form-field class="full-width" appearance="fill">
         <mat-label color="primay">{{userLabels?.fnameLbl}}</mat-label>
-        <input color="primay" matInput placeholder="{{userLabels?.fnameLbl}}" formControlName="name">
-        <mat-error *ngIf="f.name.errors?.required">
+        <input color="primay" matInput placeholder="{{userLabels?.fnameLbl}}" formControlName="fname">
+        <mat-error *ngIf="f.fname.errors?.required">
             {{userLabels?.fnameReqLbl}}
         </mat-error>
-        <mat-error *ngIf="f.name.errors?.minlength">
+        <mat-error *ngIf="f.fname.errors?.minlength">
             {{userLabels?.fnameMinLbl}}
         </mat-error>
     </mat-form-field>
@@ -32,20 +32,30 @@
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>{{userLabels?.pnumLbl}}</mat-label>
-        <input matInput placeholder="{{userLabels?.pnumLbl}}" formControlName="pnum">
+        <input matInput type="tel" pattern= "[0-9]+" placeholder="{{userLabels?.pnumLbl}}" maxlength="10" formControlName="pnum">
         <mat-error *ngIf="f.pnum.errors?.required">
             {{userLabels?.pnumReqLbl}}
         </mat-error>
         <mat-error *ngIf="f.pnum.errors?.minlength">
             {{userLabels?.pnumMinLbl}}
         </mat-error>
+        <mat-error *ngIf="!(f.pnum.errors?.minlength) && f.pnum.errors?.pattern">
+            {{userLabels?.pincPatLbl}}
+        </mat-error>
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>{{userLabels?.emailLbl}}</mat-label>
-        <input matInput placeholder="{{userLabels?.emailLbl}}" formControlName="email">
+        <input matInput type="email" placeholder="{{userLabels?.emailLbl}}" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}" formControlName="email">
         <mat-error *ngIf="f.email.errors?.required">
             {{userLabels?.pwdReqLbl}}
         </mat-error>
+        <mat-error *ngIf="f.email.errors?.email">
+            {{userLabels?.emailPatLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.email.errors?.pattern">
+            {{userLabels?.emailPatLbl}}
+        </mat-error>
+        
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>{{userLabels?.addrLbl}}</mat-label>
@@ -56,14 +66,14 @@
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
         <mat-label>{{userLabels?.pincLbl}}</mat-label>
-        <input matInput placeholder="{{userLabels?.pincLbl}}" formControlName="pcode">
-        <mat-error *ngIf="f.pcode.errors?.invalid">
+        <input matInput type="tel" pattern= "[0-9]+" maxlength="6" placeholder="{{userLabels?.pincLbl}}" formControlName="pcode">
+        <mat-error *ngIf="f.pcode.errors?.required">
             {{userLabels?.pincReqLbl}}
         </mat-error>
-        <mat-error *ngIf="f.pcode.errors?.pattern && f.pcode.errors?.minlength">
+        <mat-error *ngIf="f.pcode.errors?.minlength">
             {{userLabels?.pincMinLbl}}
         </mat-error>
-        <mat-error *ngIf="f.pcode.errors?.minlength && f.pcode.errors?.pattern">
+        <mat-error *ngIf="!(f.pcode.errors?.minlength) && f.pcode.errors?.pattern">
             {{userLabels?.pincPatLbl}}
         </mat-error>
     </mat-form-field>

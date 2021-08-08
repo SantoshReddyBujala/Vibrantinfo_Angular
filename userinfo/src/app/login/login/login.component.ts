@@ -32,8 +32,16 @@ export class LoginComponent implements OnInit {
     return this.profileForm.controls;
   }
   ngOnInit(): void {
+    this.patchValues();
   }
 
+  patchValues(): void{
+    this.profileForm.patchValue({
+      name: 'SantoshB',
+      pwd: 'Reddy123'
+    });
+  }
+  
   onSubmit() {
     // TODO: Use EventEmitter with form value
     this.loaderService.show();

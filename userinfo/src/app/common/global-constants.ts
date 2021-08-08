@@ -12,6 +12,7 @@ export class GlobalConstants {
     static readonly pwdMinLbl: string = " Password minimum of 8 characters length";
 
     static readonly UserLbl: string = "Add User";
+    static readonly updUserLbl: string = "Update User";
     static readonly fnameLbl: string = "First name";
     static readonly fnameReqLbl: string = "Please enter First name";
     static readonly fnameMinLbl: string = "First name minimum of 2 characters length";
@@ -20,6 +21,7 @@ export class GlobalConstants {
     static readonly lnameMinLbl: string = "Last name minimum of 2 characters length";
     static readonly emailLbl: string = "Email";
     static readonly emailReqLbl: string = "Please enter Email";
+    static readonly emailPatLbl: string = 'Please enter valid Email address'
     static readonly pnumLbl: string = "Phone number";
     static readonly pnumReqLbl: string = "Please enter Phone number";
     static readonly pnumMinLbl: string = "Phone number should be 10 digits";
