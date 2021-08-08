@@ -20,19 +20,30 @@ import { UserFormComponent } from '../user-form/user-form.component';
   styleUrls: ['./users-list.component.less']
 })
 export class UsersListComponent implements OnInit {
-  
+  //Constants
   userListLabels = GlobalConstants;
   matTableConsts = GlobalConstants?.MAT_TABLE_DATA_LABELS;
   matTableHeaders = GlobalConstants?.MAT_TABLE_HEADER_LABELS;
   displayedColumns = [this.matTableConsts?.avatar, this.matTableConsts?.email, this.matTableConsts?.first_name, this.matTableConsts?.last_name, this.matTableConsts?.edit, this.matTableConsts?.delete];
+  //Variable declaration
   filterValue: any;
   userNotFound:boolean = true;
+  dataSource: any;
+
+  /**
+   * 
+   * @param userService 
+   * @param loaderService 
+   * @param dialog 
+   * @param router 
+   * @param authService 
+   */
   constructor(private userService: UserService,
     private loaderService: LoaderService,
     public dialog: MatDialog,
     private router: Router,
     private authService: AuthService,) { }
-  dataSource: any;
+  
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort, {}) sort!: MatSort;
@@ -41,6 +52,10 @@ export class UsersListComponent implements OnInit {
 
   }
 
+  /**
+   * Update method
+   * @param editRdId 
+   */
   edit(editRdId?: any): void {
     this.loaderService.show();
     let userData: any;
@@ -63,6 +78,10 @@ export class UsersListComponent implements OnInit {
     });
   }
 
+  /**
+   * User delete method
+   * @param id 
+   */
   delete(id?: any): void {
     this.loaderService.show();
     this.userService.deleteUser(id).subscribe((data: any) => {
@@ -76,6 +95,9 @@ export class UsersListComponent implements OnInit {
   ngAfterViewInit() {
   }
 
+  /**
+   * Init method
+   */
   ngOnInit() {
     this.loaderService.show();
     this.userService.getUsers().subscribe((data: any) => {
@@ -87,6 +109,10 @@ export class UsersListComponent implements OnInit {
 
   }
 
+  /**
+   * User Details method
+   * @param currentRdId 
+   */
   userDetails(currentRdId?: any): void {
     this.loaderService.show();
     let userData: any;
@@ -109,11 +135,18 @@ export class UsersListComponent implements OnInit {
     });
   }
 
-
+  /**
+   * Fileter the details
+   * @param value 
+   */
   filterProduct(value: string): void {
     this.dataSource.filter = value.trim().toLowerCase();
     this.userNotFound = this.dataSource?.filteredData?.length>0? true: false;
   }
+
+  /**
+   * Add User Form
+   */
   userForm(): void {
     const dialogRef = this.dialog.open(UserFormComponent, {
       width: '400px',

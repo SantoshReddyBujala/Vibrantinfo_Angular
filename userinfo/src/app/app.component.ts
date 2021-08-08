@@ -7,5 +7,6 @@ import { GlobalConstants } from './common/global-constants'
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
+  //Label consatants
   homeCompLabels = GlobalConstants;
 }
