@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/user/user.service';
 import { Observable } from 'rxjs';
+
 import { GlobalConstants } from 'src/app/common/global-constants';
 import { LoaderService } from 'src/app/services/loader.service';
 import { CommonDialogComponent } from '../common-dialog/common-dialog.component';
@@ -31,16 +32,34 @@ export class UsersListComponent implements OnInit {
     private router: Router,
     private authService: AuthService,) { }
   dataSource: any;
-  //@ViewChild(MatPaginator) paginator: MatPaginator;
-  //@ViewChild(MatSort, {}) sort: MatSort;
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort, {}) sort!: MatSort;
 
   onNavigate(id?: any): void {
 
   }
 
-  edit(edit?: any): void {
+  edit(editRdId?: any): void {
+    this.loaderService.show();
+    let userData: any;
+    this.userService.getUser(editRdId).subscribe((data: any) => {
+      userData = data;
+      this.loaderService.hide();
+      const dialogRef = this.dialog.open(UserFormComponent, {
+        width: '400px',
+        height: '620px',
+        data: {
+          userDetails: userData
+        }
+      });
 
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+    }, error => {
+      console.log(error);
+    });
   }
 
   delete(id?: any): void {
@@ -48,18 +67,20 @@ export class UsersListComponent implements OnInit {
     this.userService.deleteUser(id).subscribe((data: any) => {
       console.log(data)
       this.loaderService.hide();
+    }, error => {
+      console.log(error);
     });
   }
 
   ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-    //this.dataSource.sort = this.sort;
   }
 
   ngOnInit() {
     this.loaderService.show();
     this.userService.getUsers().subscribe((data: any) => {
       this.dataSource = new MatTableDataSource(data.data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
       this.loaderService.hide();
     });
 
@@ -82,6 +103,8 @@ export class UsersListComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
       });
+    }, error => {
+      console.log(error);
     });
   }
 
@@ -89,7 +112,7 @@ export class UsersListComponent implements OnInit {
   filterProduct(value: string): void {
     this.dataSource.filter = value.trim().toLowerCase();
   }
-  userForm(): void{
+  userForm(): void {
     const dialogRef = this.dialog.open(UserFormComponent, {
       width: '400px',
       height: '620px'
