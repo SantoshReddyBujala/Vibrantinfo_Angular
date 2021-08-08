@@ -1,8 +1,7 @@
 export class GlobalConstants {
-    // App componet constants 
+    // App label constants 
     static readonly headerTitle: string = "vibrant user Info";
     static readonly welcMsg: string = 'welcome to vibrant info...';
-
     static readonly LoginLbl: string = "Login";
     static readonly unameLbl: string = "User name";
     static readonly unameReqLbl: string = "Please enter User name";
@@ -10,7 +9,6 @@ export class GlobalConstants {
     static readonly pwdLbl: string = "Password";
     static readonly pwdReqLbl: string = " Please enter Password";
     static readonly pwdMinLbl: string = " Password minimum of 8 characters length";
-
     static readonly UserLbl: string = "Add User";
     static readonly updUserLbl: string = "Update User";
     static readonly fnameLbl: string = "First name";
@@ -30,8 +28,12 @@ export class GlobalConstants {
     static readonly pincLbl: string = "Pincode";
     static readonly pincReqLbl: string = "Please enter Pincode";
     static readonly pincMinLbl: string = "Pincode should be 6 digits";
-    static readonly pincPatLbl="Please enter numbers";
-
+    static readonly pincPatLbl:string ="Please enter numbers";
+    static readonly userRdnotFound:string ="User record not found";
+    static readonly updSuccess:string ='Successfully updated user details. please close the model and continue further';
+    static readonly addSuccess:string = 'Successfully user record added. please close the model and continue further'
+    static readonly loginErr:string ='Username and Password should be SantoshB/Reddy123';
+    //Mat table labels
     static readonly MAT_TABLE_DATA_LABELS = {
         avatar: 'avatar',
         email: 'email',
@@ -40,6 +42,8 @@ export class GlobalConstants {
         edit: 'edit',
         delete: 'delete'
     };
+
+    // Mat table headers
     static readonly MAT_TABLE_HEADER_LABELS = {
         id: 'ID',
         image: 'User Image',

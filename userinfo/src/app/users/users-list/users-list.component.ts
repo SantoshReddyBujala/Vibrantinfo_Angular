@@ -20,12 +20,13 @@ import { UserFormComponent } from '../user-form/user-form.component';
   styleUrls: ['./users-list.component.less']
 })
 export class UsersListComponent implements OnInit {
-  filterValue: any;
+  
   userListLabels = GlobalConstants;
   matTableConsts = GlobalConstants?.MAT_TABLE_DATA_LABELS;
   matTableHeaders = GlobalConstants?.MAT_TABLE_HEADER_LABELS;
   displayedColumns = [this.matTableConsts?.avatar, this.matTableConsts?.email, this.matTableConsts?.first_name, this.matTableConsts?.last_name, this.matTableConsts?.edit, this.matTableConsts?.delete];
-
+  filterValue: any;
+  userNotFound:boolean = true;
   constructor(private userService: UserService,
     private loaderService: LoaderService,
     public dialog: MatDialog,
@@ -111,6 +112,7 @@ export class UsersListComponent implements OnInit {
 
   filterProduct(value: string): void {
     this.dataSource.filter = value.trim().toLowerCase();
+    this.userNotFound = this.dataSource?.filteredData?.length>0? true: false;
   }
   userForm(): void {
     const dialogRef = this.dialog.open(UserFormComponent, {

@@ -7,11 +7,11 @@ import { GlobalConstants } from '../common/global-constants';
   styleUrls: ['./home.component.less']
 })
 export class HomeComponent implements OnInit {
-  
+  //Label constants
   welcomeLbls=GlobalConstants;
+  
   constructor() { }
 
   ngOnInit(): void {
-  }
-
+  };
 }
