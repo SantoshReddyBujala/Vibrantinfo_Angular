@@ -92,7 +92,7 @@ export class UsersListComponent implements OnInit {
   userForm(): void{
     const dialogRef = this.dialog.open(UserFormComponent, {
       width: '400px',
-      height: '570px'
+      height: '620px'
     });
 
     dialogRef.afterClosed().subscribe(result => {

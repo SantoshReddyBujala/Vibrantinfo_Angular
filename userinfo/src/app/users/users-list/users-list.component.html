@@ -43,14 +43,14 @@
     <!-- Action Column -->
     <ng-container matColumnDef="{{matTableConsts?.edit}}">
       <mat-header-cell *matHeaderCellDef mat-sort-header> {{matTableHeaders?.edit}} </mat-header-cell>
-      <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+      <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
           color="primary" (click)="edit(element)">
           <mat-icon>edit</mat-icon>
         </button> </mat-cell>
     </ng-container>
     <ng-container matColumnDef="{{matTableConsts?.delete}}">
       <mat-header-cell *matHeaderCellDef mat-sort-header> {{matTableHeaders?.delete}} </mat-header-cell>
-      <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+      <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()"> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
           (click)="delete(element.id)" color="warn">
           <mat-icon>delete</mat-icon>
         </button> </mat-cell>

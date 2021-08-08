@@ -1,73 +1,70 @@
-<h3 class="flex-center">{{userLabels?.LoginLbl}}</h3>
+<h3 class="flex-center nomargin">{{userLabels?.UserLbl}}</h3>
 <form class="user-form" [formGroup]="userForm" (ngSubmit)="onSubmit()" color="primary">
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label color="primay">{{userLabels?.unameLbl}}</mat-label>
-        <input color="primay" matInput placeholder="Username" formControlName="name">
+        <mat-label color="primay">{{userLabels?.fnameLbl}}</mat-label>
+        <input color="primay" matInput placeholder="{{userLabels?.fnameLbl}}" formControlName="name">
         <mat-error *ngIf="f.name.errors?.required">
-            {{userLabels?.unameReqLbl}}
+            {{userLabels?.fnameReqLbl}}
         </mat-error>
         <mat-error *ngIf="f.name.errors?.minlength">
+            {{userLabels?.fnameMinLbl}}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>{{userLabels?.lnameLbl}}</mat-label>
+        <input matInput placeholder="{{userLabels?.lnameLbl}}" formControlName="lname">
+        <mat-error *ngIf="f.lname.errors?.required">
+            {{userLabels?.lnameReqLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.lname.errors?.minlength">
+            {{userLabels?.lnameMinLbl}}
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width" appearance="fill">
+        <mat-label>{{userLabels?.unameLbl}}</mat-label>
+        <input matInput placeholder="{{userLabels?.unameLbl}}" formControlName="uname">
+        <mat-error *ngIf="f.uname.errors?.required">
+            {{userLabels?.unameReqLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.uname.errors?.minlength">
             {{userLabels?.unameMinLbl}}
         </mat-error>
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Last name</mat-label>
-        <input matInput placeholder="Last name" formControlName="lname">
-        <mat-error *ngIf="f.lname.errors?.required">
-            {{userLabels?.pwdReqLbl}}
-        </mat-error>
-        <mat-error *ngIf="f.lname.errors?.minlength">
-            {{userLabels?.pwdMinLbl}}
-        </mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-        <mat-label>User name</mat-label>
-        <input matInput placeholder="User name" formControlName="uname">
-        <mat-error *ngIf="f.uname.errors?.required">
-            {{userLabels?.pwdReqLbl}}
-        </mat-error>
-        <mat-error *ngIf="f.uname.errors?.minlength">
-            {{userLabels?.pwdMinLbl}}
-        </mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Phone Number</mat-label>
-        <input matInput placeholder="Phone number" formControlName="pnum">
+        <mat-label>{{userLabels?.pnumLbl}}</mat-label>
+        <input matInput placeholder="{{userLabels?.pnumLbl}}" formControlName="pnum">
         <mat-error *ngIf="f.pnum.errors?.required">
-            {{userLabels?.pwdReqLbl}}
+            {{userLabels?.pnumReqLbl}}
         </mat-error>
         <mat-error *ngIf="f.pnum.errors?.minlength">
-            {{userLabels?.pwdMinLbl}}
+            {{userLabels?.pnumMinLbl}}
         </mat-error>
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput placeholder="Email" formControlName="email">
+        <mat-label>{{userLabels?.emailLbl}}</mat-label>
+        <input matInput placeholder="{{userLabels?.emailLbl}}" formControlName="email">
         <mat-error *ngIf="f.email.errors?.required">
             {{userLabels?.pwdReqLbl}}
         </mat-error>
-        <mat-error *ngIf="f.email.errors?.minlength">
-            {{userLabels?.pwdMinLbl}}
-        </mat-error>
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Address</mat-label>
-        <input matInput placeholder="Address" formControlName="addr">
+        <mat-label>{{userLabels?.addrLbl}}</mat-label>
+        <input matInput placeholder="{{userLabels?.addrLbl}}" formControlName="addr">
         <mat-error *ngIf="f.addr.errors?.required">
-            {{userLabels?.pwdReqLbl}}
-        </mat-error>
-        <mat-error *ngIf="f.addr.errors?.minlength">
-            {{userLabels?.pwdMinLbl}}
+            {{userLabels?.addrReqLbl}}
         </mat-error>
     </mat-form-field>
     <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Pincode</mat-label>
-        <input matInput placeholder="Pincode" formControlName="pcode">
-        <mat-error *ngIf="f.pcode.errors?.required">
-            {{userLabels?.pwdReqLbl}}
+        <mat-label>{{userLabels?.pincLbl}}</mat-label>
+        <input matInput placeholder="{{userLabels?.pincLbl}}" formControlName="pcode">
+        <mat-error *ngIf="f.pcode.errors?.invalid">
+            {{userLabels?.pincReqLbl}}
         </mat-error>
-        <mat-error *ngIf="f.pcode.errors?.minlength">
-            {{userLabels?.pwdMinLbl}}
+        <mat-error *ngIf="f.pcode.errors?.pattern && f.pcode.errors?.minlength">
+            {{userLabels?.pincMinLbl}}
+        </mat-error>
+        <mat-error *ngIf="f.pcode.errors?.minlength && f.pcode.errors?.pattern">
+            {{userLabels?.pincPatLbl}}
         </mat-error>
     </mat-form-field>
     <mat-dialog-actions class="flex-center">

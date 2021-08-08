@@ -13,15 +13,15 @@ export class UserFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder,) { }
 
-
+   numericNumberReg: string = '/^[0-9]\d*$/';
   userForm = this.fb.group({
-    name: [null, [Validators.required, Validators.minLength(8)]],
-    lname: [null, [Validators.required, Validators.minLength(8)]],
+    name: [null, [Validators.required, Validators.minLength(2)]],
+    lname: [null, [Validators.required, Validators.minLength(2)]],
     uname: [null, [Validators.required, Validators.minLength(8)]],
-    pnum: [null, [Validators.required, Validators.minLength(8)]],
-    email: [null, [Validators.required, Validators.minLength(8)]],
-    addr: [null, [Validators.required, Validators.minLength(8)]],
-    pcode: [null, [Validators.required, Validators.minLength(8)]]
+    pnum: [null, [Validators.required, Validators.minLength(10)]],
+    email: [null, [Validators.required]],
+    addr: [null, [Validators.required]],
+    pcode: [null, [Validators.required, Validators.minLength(6), Validators.pattern(this.numericNumberReg)]]
   });
 
   
