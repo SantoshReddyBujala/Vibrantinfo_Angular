@@ -64,7 +64,7 @@
 
     <mat-paginator [pageSizeOptions]="[3, 6]" [pageSize]="3" showFirstLastButtons></mat-paginator>
   </div>
-  <div class="userRnf">
+  <div class="userRnf" *ngIf="!userNotFound">
     <h1 class="font-h1">{{userListLabels?.userRdnotFound | uppercase }}</h1>
   </div>
 
