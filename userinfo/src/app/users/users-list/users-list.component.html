@@ -1,6 +1,6 @@
 <div>
   <div class="flex margin">
-    <mat-form-field >
+    <mat-form-field>
       <mat-label class="search">Filter Product</mat-label>
       <input matInput type="text" [(ngModel)]="filterValue" (blur)="filterProduct(filterValue)"
         placeholder="Search product name">
@@ -9,6 +9,7 @@
       <button mat-raised-button color="primary" (click)="userForm()">Add User</button>
     </div>
   </div>
+<div *ngIf="userNotFound">
   <mat-table #table [dataSource]="dataSource" matSort>
     <!-- First Column ID-->
     <ng-container matColumnDef="id">
@@ -19,7 +20,8 @@
     <!-- Second Column -->
     <ng-container matColumnDef="{{matTableConsts?.avatar}}">
       <mat-header-cell *matHeaderCellDef mat-sort-header> {{matTableHeaders?.image}} </mat-header-cell>
-      <mat-cell *matCellDef="let element"><img [src]="element.avatar" width="75" height="75" alt="image" /> </mat-cell>
+      <mat-cell *matCellDef="let element"><img [src]="element.avatar" width="75" height="75" alt="image" />
+      </mat-cell>
     </ng-container>
 
     <!-- Third Column -->
@@ -43,15 +45,15 @@
     <!-- Action Column -->
     <ng-container matColumnDef="{{matTableConsts?.edit}}">
       <mat-header-cell *matHeaderCellDef mat-sort-header> {{matTableHeaders?.edit}} </mat-header-cell>
-      <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
-          color="primary" (click)="edit(element.id)">
+      <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()"> <button mat-icon-button
+          matTooltip="Click to Edit" class="iconbutton" color="primary" (click)="edit(element.id)">
           <mat-icon>edit</mat-icon>
         </button> </mat-cell>
     </ng-container>
     <ng-container matColumnDef="{{matTableConsts?.delete}}">
       <mat-header-cell *matHeaderCellDef mat-sort-header> {{matTableHeaders?.delete}} </mat-header-cell>
-      <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()"> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
-          (click)="delete(element.id)" color="warn">
+      <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()"> <button mat-icon-button
+          matTooltip="Click to Delete" class="iconbutton" (click)="delete(element.id)" color="warn">
           <mat-icon>delete</mat-icon>
         </button> </mat-cell>
     </ng-container>
@@ -60,6 +62,10 @@
     <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="userDetails(row.id)"></mat-row>
   </mat-table>
 
-  <mat-paginator [pageSizeOptions]="[4, 8, 12]" [pageSize]="2" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[3, 6]" [pageSize]="3" showFirstLastButtons></mat-paginator>
+</div>
+<div class="userRnf">
+  <h1 class="font-h1">{{userListLabels?.userRdnotFound | uppercase }}</h1>
+</div>
 
 </div>

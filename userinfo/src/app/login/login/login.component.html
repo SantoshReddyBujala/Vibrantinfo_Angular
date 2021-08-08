@@ -5,20 +5,20 @@
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>{{loginLabels?.unameLbl}}</mat-label>
                 <input matInput placeholder="Username" formControlName="name" value="SantoshB">
-                <mat-error *ngIf="f.name && f.name.errors?.required">
+                <mat-error *ngIf="f.name.errors?.required">
                     {{loginLabels?.unameReqLbl}}
                 </mat-error>
-                <mat-error *ngIf="f.name && f.name.errors?.minlength">
+                <mat-error *ngIf="f.name.errors?.minlength">
                     {{loginLabels?.unameMinLbl}}
                 </mat-error>
             </mat-form-field>
             <mat-form-field class="full-width" appearance="fill">
                 <mat-label>{{loginLabels?.pwdLbl}}</mat-label>
                 <input matInput type="password" placeholder="Password" formControlName="pwd" value="Reddy123">
-                <mat-error *ngIf="f.pwd && f.pwd.errors?.required">
+                <mat-error *ngIf="f.pwd.errors?.required">
                     {{loginLabels?.pwdReqLbl}}
                 </mat-error>
-                <mat-error *ngIf="f.pwd && f.pwd.errors?.minlength">
+                <mat-error *ngIf="f.pwd.errors?.minlength">
                     {{loginLabels?.pwdMinLbl}}
                 </mat-error>
             </mat-form-field>
