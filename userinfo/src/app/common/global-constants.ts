@@ -28,11 +28,14 @@ export class GlobalConstants {
     static readonly pincLbl: string = "Pincode";
     static readonly pincReqLbl: string = "Please enter Pincode";
     static readonly pincMinLbl: string = "Pincode should be 6 digits";
-    static readonly pincPatLbl:string ="Please enter numbers";
-    static readonly userRdnotFound:string ="User record not found";
-    static readonly updSuccess:string ='Successfully updated user details. please close the model and continue further';
-    static readonly addSuccess:string = 'Successfully user record added. please close the model and continue further'
-    static readonly loginErr:string ='Username and Password should be SantoshB/Reddy123';
+    static readonly pincPatLbl: string = "Please enter numbers";
+    static readonly userRdnotFound: string = "User record not found";
+    static readonly userFilterLbl: string = 'Filter User';
+    static readonly userFilterPlaceLbl: string = 'Search User';
+    static readonly addUserBtn: string = 'Add User';
+    static readonly updSuccess: string = 'Successfully updated user details. please close the model and continue further';
+    static readonly addSuccess: string = 'Successfully user record added. please close the model and continue further'
+    static readonly loginErr: string = 'Username and Password should be SantoshB/Reddy123';
     //Mat table labels
     static readonly MAT_TABLE_DATA_LABELS = {
         avatar: 'avatar',
