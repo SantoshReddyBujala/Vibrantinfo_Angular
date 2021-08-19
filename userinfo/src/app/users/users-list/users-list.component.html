@@ -62,7 +62,7 @@
       <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="userDetails(row.id)"></mat-row>
     </mat-table>
 
-    <mat-paginator [pageSizeOptions]="[3, 6]" [pageSize]="3" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[1, 2, 3, 4, 5]" [pageSize]="1" showFirstLastButtons></mat-paginator>
   </div>
   <div class="userRnf" *ngIf="!userNotFound">
     <h1 class="font-h1">{{userListLabels?.userRdnotFound | uppercase }}</h1>
